@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [animals, setAnimals] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.api-ninjas.com/v1/animals?name=dog', {
+      headers: {
+        'X-Api-Key': 'xOgcBLTk9ZvG5bGTzeP6nw==0rPJoVOZEFUD0zmp'
+      }
+    })
+      .then(response => response.json())
+      .then(data => setAnimals(data));
+  }, [])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Lista de animales</h1>
+      <ul>
+        {animals.map(a => {
+          return <li>{a.name}</li>
+        })}
+      </ul>
     </div>
   );
 }
