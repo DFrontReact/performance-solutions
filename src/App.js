@@ -1,27 +1,28 @@
-import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import List from './List';
+import Top from './Top';
+import Guess from "./Guess";
+import Favourites from "./Favourites";
+import './App.css';
 
-function App() {
-  const [animals, setAnimals] = useState([]);
-
-  useEffect(() => {
-    fetch('https://api.api-ninjas.com/v1/animals?name=dog', {
-      headers: {
-        'X-Api-Key': 'xOgcBLTk9ZvG5bGTzeP6nw==0rPJoVOZEFUD0zmp'
-      }
-    })
-      .then(response => response.json())
-      .then(data => setAnimals(data));
-  }, [])
-  
+function App() {  
   return (
-    <div className="App">
-      <h1>Lista de animales</h1>
-      <ul>
-        {animals.map(a => {
-          return <li>{a.name}</li>
-        })}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <a href="/">Lista</a>
+        <a href="/top">Top</a>
+        <a href="/guess">Adivinanza</a>
+        <a href="/favourites">Favoritos</a>
+      </nav>
+      <main>
+        <Routes>
+          <Route path="top" element={<Top />} />
+          <Route path="guess" element={<Guess />} />
+          <Route path="favourites" element={<Favourites />} />
+          <Route path="/" exact element={<List />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
   );
 }
 
