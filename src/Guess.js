@@ -2,33 +2,26 @@ import { useState } from 'react';
 
 export default function Guess() {
   const [showHint, setShowHint] = useState(false);
-  if (showHint) {
-    return (
-      <div>
-        <h1>Adivinanza</h1> 
-        <p>Para ser más elegante no usa guante ni chaqué,
-        solo cambia en un instante por una «efe» la «ge».</p>
-        <p><i>Pista: Es grande.</i></p>
-        <Form />
-        <br />
-        <button onClick={() => {
-          setShowHint(false);
-        }}>Ocultar pista</button>
-      </div>
-    );
-  }
+
   return (
     <div>
-      <h1>Adivinanza</h1>
+      <h1>Adivinanza</h1> 
       <p>Para ser más elegante no usa guante ni chaqué,
-        solo cambia en un instante por una «efe» la «ge».</p>
+      solo cambia en un instante por una «efe» la «ge».</p>
+      {showHint && (<p><i>Pista: Es grande.</i></p>)}
       <Form />
       <br />
-      <button onClick={() => {
-        setShowHint(true);
-      }}>Mostrar pista</button>
+      {showHint ? (
+        <button onClick={() => {
+          setShowHint(false);
+        }}>Hide hint</button>
+      ) : (
+        <button onClick={() => {
+          setShowHint(true);
+        }}>Show hint</button>
+      )}
     </div>
-  );
+  )
 }
 
 function Form() {

@@ -16,8 +16,8 @@ export default function Favourites() {
     return (
       <Fragment>
         <h1>Animales favoritos</h1>
-        <Field label="Last name" />
-        <Field label="First name" />
+        <Field key="Last name" label="Last name" />
+        <Field key="First name" label="First name" />
         {checkbox}
       </Fragment>
     );
@@ -25,8 +25,8 @@ export default function Favourites() {
     return (
       <Fragment>
         <h1>Animales favoritos</h1>
-        <Field label="First name" />
-        <Field label="Last name" />
+        <Field key="First name" label="First name" />
+        <Field key="Last name" label="Last name" />
         {checkbox}
       </Fragment>
     );    

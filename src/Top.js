@@ -23,7 +23,7 @@ const Top = () => {
       </label>
       <ul>
         {displayedAnimals.map((animal, i) =>
-          <li key={i}>
+          <li key={animal.name}>
             <Animal animal={animal} />
           </li>
         )}
