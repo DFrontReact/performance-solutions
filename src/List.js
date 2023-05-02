@@ -1,14 +1,10 @@
 import { useState } from 'react';
+import Searcher from './components/Searcher';
 
 function List() {
   const [animals, setAnimals] = useState([]);
-  const [searcher, setSearcher] = useState([]);
 
-  const handleChange = evt => {
-    setSearcher(evt.target.value);
-  }
-
-  const onClickFilter = () => {
+  const handleSubmit = searcher => {
     fetch(`https://api.api-ninjas.com/v1/animals?name=${searcher}`, {
       headers: {
         'X-Api-Key': 'xOgcBLTk9ZvG5bGTzeP6nw==0rPJoVOZEFUD0zmp'
@@ -21,10 +17,7 @@ function List() {
   return (
     <div>
       <h1>Lista de animales</h1>
-      <form>
-        <input type='text' value={searcher} onChange={handleChange}/>
-      </form>
-      <button onClick={onClickFilter}>Filtrar</button>
+      <Searcher onSubmit={handleSubmit}/>
       <ul>
         {animals.map(a => {
           return <li>{a.name}</li>
