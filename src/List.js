@@ -8,7 +8,8 @@ function List() {
     setSearcher(evt.target.value);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = evt => {
+    evt.preventDefault();
     fetch(`https://api.api-ninjas.com/v1/animals?name=${searcher}`, {
       headers: {
         'X-Api-Key': 'xOgcBLTk9ZvG5bGTzeP6nw==0rPJoVOZEFUD0zmp'
