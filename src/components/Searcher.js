@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
 const Searcher = ({onSubmit}) => {
   const [searcher, setSearcher] = useState('');
@@ -20,4 +20,4 @@ const Searcher = ({onSubmit}) => {
   )
 }
 
-export default Searcher;
+export default memo(Searcher);
